@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LDOCappedQueue_Example' do
+  pod 'LDOCappedQueue', :path => '../'
+
+  target 'LDOCappedQueue_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
