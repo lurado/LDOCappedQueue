@@ -1,0 +1,6 @@
+framework module LDOCappedQueue {
+  umbrella header "LDOCappedQueue-umbrella.h"
+
+  export *
+  module * { export * }
+}

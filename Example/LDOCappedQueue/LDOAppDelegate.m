@@ -3,7 +3,7 @@
 //  LDOCappedQueue
 //
 //  Created by Sebastian Ludwig on 10/18/2016.
-//  Copyright (c) 2016 Sebastian Ludwig. All rights reserved.
+//  Copyright (c) 2016 Julian Raschke und Sebastian Ludwig GbR. All rights reserved.
 //
 
 #import "LDOAppDelegate.h"

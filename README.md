@@ -1,15 +1,10 @@
 # LDOCappedQueue
 
-[![CI Status](http://img.shields.io/travis/Sebastian Ludwig/LDOCappedQueue.svg?style=flat)](https://travis-ci.org/Sebastian Ludwig/LDOCappedQueue)
-[![Version](https://img.shields.io/cocoapods/v/LDOCappedQueue.svg?style=flat)](http://cocoapods.org/pods/LDOCappedQueue)
-[![License](https://img.shields.io/cocoapods/l/LDOCappedQueue.svg?style=flat)](http://cocoapods.org/pods/LDOCappedQueue)
-[![Platform](https://img.shields.io/cocoapods/p/LDOCappedQueue.svg?style=flat)](http://cocoapods.org/pods/LDOCappedQueue)
+A queue that only holds a maximum number of items and discards the least recently added ones, if new ones are added and the capacity is reached.  
 
-## Example
+It's a relatively thin wrapper around `NSMutableArray`, which is a circular buffer (believing [Bartosz Ciechanowski](http://ciechanowski.me/blog/2014/03/05/exposing-nsmutablearray/)). Therefore enqueueing and dequeueing are O(1) operations.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+The implementation is not thread safe.
 
 ## Installation
 
@@ -22,7 +17,7 @@ pod "LDOCappedQueue"
 
 ## Author
 
-Sebastian Ludwig, sebastian@lurado.de
+Julian Raschke und Sebastian Ludwig GbR, http://www.lurado.com
 
 ## License
 
