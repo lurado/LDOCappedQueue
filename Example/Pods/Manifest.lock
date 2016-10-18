@@ -1,0 +1,16 @@
+PODS:
+  - LDOCappedQueue (0.4.0)
+
+DEPENDENCIES:
+  - LDOCappedQueue (from `../`)
+
+EXTERNAL SOURCES:
+  LDOCappedQueue:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LDOCappedQueue: d94646960ed7e0ef79b268947fd4f9a7a92c9e57
+
+PODFILE CHECKSUM: ec27d3eb5b0a166acc0c3838895b3013a12ce559
+
+COCOAPODS: 1.0.1

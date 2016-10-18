@@ -3,10 +3,11 @@
 //  LDOCappedQueue
 //
 //  Created by Sebastian Ludwig on 10/18/2016.
-//  Copyright (c) 2016 Sebastian Ludwig. All rights reserved.
+//  Copyright (c) 2016 Julian Raschke und Sebastian Ludwig GbR. All rights reserved.
 //
 
 #import "LDOViewController.h"
+@import LDOCappedQueue;
 
 @interface LDOViewController ()
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    LDOCappedQueue *queue;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
