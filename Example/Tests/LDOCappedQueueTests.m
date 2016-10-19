@@ -110,8 +110,8 @@
     [queue enqueueObjectsFromArray:entries];
     
     XCTAssertEqual(queue.count, 2);
-    XCTAssertEqual(queue.dequeueObject, entries[0]);
-    XCTAssertEqual(queue.dequeueObject, entries[1]);
+    XCTAssertEqual([queue dequeueObject], entries[0]);
+    XCTAssertEqual([queue dequeueObject], entries[1]);
 }
 
 - (void)testEnqueueMultipleTooMany
@@ -123,8 +123,75 @@
     XCTAssertEqual(queue.count, 4);
     
     for (int i = 1; i < entries.count; ++i) {
-        XCTAssertEqual(queue.dequeueObject, entries[i]);
+        XCTAssertEqual([queue dequeueObject], entries[i]);
     }
+}
+
+- (void)testPrequeueObjectAddsAtFront
+{
+    [self fillQueue:queue withObjects:2];
+    NSString *new = [self randomString];
+    [queue prequeueObject:new];
+    
+    XCTAssertEqual(queue.count, 3);
+    XCTAssertEqual([queue dequeueObject], new);
+}
+
+- (void)testPrequeueObjectDoesNotAddIfCapacityReached
+{
+    [self fillQueue:queue withObjects:4];
+    NSString *new = [self randomString];
+    [queue prequeueObject:new];
+    
+    XCTAssertNotEqual([queue dequeueObject], new);
+}
+
+- (void)testPrequeueMultiple
+{
+    [self fillQueue:queue withObjects:2];
+    NSArray<NSString *> *newEntries = @[[self randomString], [self randomString]];
+    
+    [queue prequeueObjectsFromArray:newEntries];
+    
+    XCTAssertEqual([queue dequeueObject], newEntries[0]);
+    XCTAssertEqual([queue dequeueObject], newEntries[1]);
+}
+
+- (void)testPrequeueMultipleTooMany
+{
+    NSArray<NSString *> *newEntries = @[[self randomString], [self randomString], [self randomString], [self randomString], [self randomString]];
+    
+    [queue prequeueObjectsFromArray:newEntries];
+    
+    XCTAssertEqual(queue.count, 4);
+}
+
+- (void)testPrequeueMultipleAddsNewest
+{
+    NSArray<NSString *> *entries = @[[self randomString], [self randomString], [self randomString]];
+    [queue enqueueObjectsFromArray:entries];
+    NSArray<NSString *> *newEntries = @[[self randomString], [self randomString]];
+    
+    [queue prequeueObjectsFromArray:newEntries];
+    
+    XCTAssertEqual([queue dequeueObject], newEntries[1]);
+    XCTAssertEqual([queue dequeueObject], entries[0]);
+    XCTAssertEqual([queue dequeueObject], entries[1]);
+    XCTAssertEqual([queue dequeueObject], entries[2]);
+}
+
+- (void)testDequeuePrequeue
+{
+    NSArray<NSString *> *entries = @[[self randomString], [self randomString], [self randomString], [self randomString]];
+    [queue enqueueObjectsFromArray:entries];
+    
+    NSArray<NSString *> *dequeued = [queue dequeueObjects:2];
+    [queue prequeueObjectsFromArray:dequeued];
+    
+    XCTAssertEqual([queue dequeueObject], entries[0]);
+    XCTAssertEqual([queue dequeueObject], entries[1]);
+    XCTAssertEqual([queue dequeueObject], entries[2]);
+    XCTAssertEqual([queue dequeueObject], entries[3]);
 }
 
 @end

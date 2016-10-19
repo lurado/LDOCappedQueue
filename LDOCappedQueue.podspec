@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LDOCappedQueue'
-  s.version          = '0.4.0'
+  s.version          = '0.5.0'
   s.summary          = "A queue that doesn't grow indefinitely."
 
   s.description      = <<-DESC

@@ -53,6 +53,24 @@
     [self.buffer addObjectsFromArray:array];
 }
 
+- (void)prequeueObject:(nonnull id)object
+{
+    if (self.count + 1 > self.capacity) {
+        return;
+    }
+    
+    [self.buffer insertObject:object atIndex:0];
+}
+
+- (void)prequeueObjectsFromArray:(nonnull NSArray<id> *)array
+{
+    NSUInteger newEntriesCount = MIN(array.count, self.capacity - self.count);
+    
+    for (int i = 0; i < newEntriesCount; ++i) {
+        [self.buffer insertObject:array[array.count - newEntriesCount + i] atIndex:i];
+    }
+}
+
 - (nullable id)dequeueObject
 {
     if (self.count == 0) {
