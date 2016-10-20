@@ -30,6 +30,11 @@
     return self.buffer.count;
 }
 
+- (NSArray<id> *)allObjects
+{
+    return [self.buffer copy];
+}
+
 - (void)enqueueObject:(nonnull id)object
 {
     if (self.count + 1 > self.capacity) {

@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) NSUInteger capacity;
 @property (nonatomic, readonly) NSUInteger count;
+@property (nonatomic, readonly, nonnull) NSArray<ObjectType> *allObjects;
 
 - (nullable instancetype)init NS_UNAVAILABLE;
 - (nullable instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;

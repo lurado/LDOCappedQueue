@@ -194,5 +194,17 @@
     XCTAssertEqual([queue dequeueObject], entries[3]);
 }
 
+- (void)allObjects
+{
+    NSArray<NSString *> *entries = @[[self randomString], [self randomString], [self randomString], [self randomString]];
+    [queue enqueueObjectsFromArray:entries];
+    
+    NSArray<NSString *> *allObjects = queue.allObjects;
+    
+    for (int i = 0; i < entries.count; ++i) {
+        XCTAssertEqual(allObjects[i], entries[i]);
+    }
+}
+
 @end
 
