@@ -37,7 +37,7 @@
 
 - (void)enqueueObject:(nonnull id)object
 {
-    if (self.count + 1 > self.capacity) {
+    if (self.count == self.capacity) {
         [self.buffer removeObjectAtIndex:0];
     }
     
@@ -48,7 +48,8 @@
 {
     NSUInteger newEntriesCount = MIN(array.count, self.capacity);
     if (self.count + newEntriesCount > self.capacity) {
-        [self.buffer removeObjectsInRange:NSMakeRange(0, newEntriesCount)];
+        NSInteger excessObjects = (self.count + newEntriesCount - self.capacity);
+        [self.buffer removeObjectsInRange:NSMakeRange(0, excessObjects)];
     }
     
     if (newEntriesCount != array.count) {

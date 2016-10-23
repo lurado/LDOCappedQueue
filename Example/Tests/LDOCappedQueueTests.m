@@ -127,6 +127,23 @@
     }
 }
 
+- (void)testEnqueueMultipleSlightlyTooMany
+{
+    NSString *first = [self randomString];
+    NSString *second = [self randomString];
+    [queue enqueueObjectsFromArray:@[first, second]];
+    
+    NSArray<NSString *> *newEntries = @[[self randomString], [self randomString], [self randomString]];
+    [queue enqueueObjectsFromArray:newEntries];
+    
+    XCTAssertEqual(queue.count, 4);
+    
+    XCTAssertEqual([queue dequeueObject], second);
+    for (NSString *newEntry in newEntries) {
+        XCTAssertEqual([queue dequeueObject], newEntry);
+    }
+}
+
 - (void)testPrequeueObjectAddsAtFront
 {
     [self fillQueue:queue withObjects:2];
