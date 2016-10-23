@@ -30,7 +30,7 @@
     return self.buffer.count;
 }
 
-- (NSArray<id> *)allObjects
+- (NSArray *)allObjects
 {
     return [self.buffer copy];
 }
@@ -44,7 +44,7 @@
     [self.buffer addObject:object];
 }
 
-- (void)enqueueObjectsFromArray:(NSArray<id> *)array
+- (void)enqueueObjectsFromArray:(NSArray *)array
 {
     NSUInteger newEntriesCount = MIN(array.count, self.capacity);
     if (self.count + newEntriesCount > self.capacity) {
@@ -68,7 +68,7 @@
     [self.buffer insertObject:object atIndex:0];
 }
 
-- (void)prequeueObjectsFromArray:(nonnull NSArray<id> *)array
+- (void)prequeueObjectsFromArray:(nonnull NSArray *)array
 {
     NSUInteger newEntriesCount = MIN(array.count, self.capacity - self.count);
     
@@ -87,10 +87,10 @@
     return object;
 }
 
-- (nonnull NSArray<id> *)dequeueObjects:(NSUInteger)maxCount
+- (nonnull NSArray *)dequeueObjects:(NSUInteger)maxCount
 {
     NSRange range = NSMakeRange(0, MIN(self.count, maxCount));
-    NSArray<id> *objects = [self.buffer subarrayWithRange:range];
+    NSArray *objects = [self.buffer subarrayWithRange:range];
     [self.buffer removeObjectsInRange:range];
     return objects;
 }
