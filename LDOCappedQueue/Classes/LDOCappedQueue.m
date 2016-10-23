@@ -61,7 +61,7 @@
 
 - (void)prequeueObject:(nonnull id)object
 {
-    if (self.count + 1 > self.capacity) {
+    if (self.count == self.capacity) {
         return;
     }
     
@@ -72,8 +72,8 @@
 {
     NSUInteger newEntriesCount = MIN(array.count, self.capacity - self.count);
     
-    for (int i = 0; i < newEntriesCount; ++i) {
-        [self.buffer insertObject:array[array.count - newEntriesCount + i] atIndex:i];
+    for (NSUInteger i = 1; i <= newEntriesCount; ++i) {
+        [self.buffer insertObject:array[array.count - i] atIndex:0];
     }
 }
 
