@@ -16,7 +16,7 @@
 
 @implementation LDOCappedQueue
 
-- (nullable instancetype)initWithCapacity:(NSUInteger)capacity
+- (instancetype)initWithCapacity:(NSUInteger)capacity
 {
     if (self = [super init]) {
         _capacity = capacity;
