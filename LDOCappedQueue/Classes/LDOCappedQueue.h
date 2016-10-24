@@ -14,8 +14,8 @@
 @property (nonatomic, readonly) NSUInteger count;
 @property (nonatomic, readonly, nonnull) NSArray<ObjectType> *allObjects;
 
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init NS_UNAVAILABLE;
+- (nonnull instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
 
 /**
  * @brief Adds an object at the end of the queue.
